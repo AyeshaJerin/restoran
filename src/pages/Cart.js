@@ -20,7 +20,7 @@ function Cart () {
      const [discount,setDiscount]=React.useState(metadata.discount ?? 0);
     const checkCoupon=async () => {
       let code=document.getElementById('coupon_code').value;
-      let res = await axios.get(`front_api/coupon_check.php?code=${code}`);
+      let res = await axios.get(`coupon_check?code=${code}`);
       if(res.data){
         if(res.data?.amount){
           let dis=cartTotal * (parseFloat(res.data?.amount)/100);
@@ -29,11 +29,6 @@ function Cart () {
         }
       }
     }
-      
-
-
-
-
 
     return(
         <Weblayout>
@@ -76,10 +71,10 @@ function Cart () {
                           <td>
                             <div className="media">
                               <div className="d-flex">
-                                <img src={`${process.env.REACT_APP_API_URL}${d.image}`} alt="" width="100px" />
+                                <img src={`${process.env.REACT_APP_IMAGE_URL}${d.image}`} alt="" width="100px" />
                               </div>
                               <div className="media-body">
-                                <p>{d.name}</p>
+                                <p>{d.title}</p>
                               </div>
                             </div>
                           </td>
@@ -175,10 +170,7 @@ function Cart () {
                           </div>
                         </td>
                       </tr>
-                      
 
-
-                        
                       </tbody>
                     </table>
                   </div>

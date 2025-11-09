@@ -12,7 +12,7 @@ function Login() {
     };
     console.log(datas);
     try{
-      let url='http://localhost/restoran-api/login.php';
+      let url='http://localhost:8000/api/login';
       
       let response= await axios({
           method: 'post',

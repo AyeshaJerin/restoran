@@ -19,20 +19,15 @@ function Home(){
         getCats();
     }, []);
     const getFoods = async (catId) => {
-        let feat = await axios.get(`front_api/foods.php?category_id=${catId}`)
+        let feat = await axios.get(`category_product?category_id=${catId}`)
         setFoods(feat.data);
         setTabKey(catId);
     }
 
     const getCats = async (e) => {
-        let res = await axios.get(`front_api/categories.php`)
+        let res = await axios.get(`categories`)
         setCat(res.data);
     }
-
-
-
-    
-
 
     return(
         <Weblayout>

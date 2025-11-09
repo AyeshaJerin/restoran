@@ -33,12 +33,12 @@ function Foods() {
   }, []);
 
   const getDatas = async (e) => {
-    let res = await axios.get(`foods/list.php`)
+    let res = await axios.get(`foods`)
     setList(res.data);
   }
 
   const getCategories = async (e) => {
-      let res = await axios.get(`categories/list.php`)
+      let res = await axios.get(`categories`)
       setCat(res.data);
   }
 
@@ -62,7 +62,7 @@ function Foods() {
     const formData = new FormData();
     /* handel image/file */
     for (let i = 0; i < selectedfile.length; i++) {
-      formData.append('files[]', selectedfile[i])
+      formData.append('image', selectedfile[i])
     }
 
     for (const property in datas) {
@@ -74,7 +74,7 @@ function Foods() {
       if(datas.id!=''){
         url=`foods/update.php`;
       }else{
-        url=`foods/add.php`;
+        url=`foods`;
       }
      
       let response= await axios.post(url,formData);
@@ -128,12 +128,12 @@ function Foods() {
           {list.length > 0 && list.map((d, key) =>
             <tr key={key}>
               <td className="text-bold-500">{key+1}</td>
-              <td>{d.cat_name}</td>
+              <td>{d.category?.name}</td>
               <td>{d.title}</td>
               <td>{d.description}</td>
               <td>{d.price}</td>
              
-              <td><img src={`${process.env.REACT_APP_API_URL}${d.image}`} width="100px"/></td>
+              <td><img src={`${process.env.REACT_APP_IMAGE_URL}${d.image}`} width="100px"/></td>
               <td>
                   <Button variant="primary" onClick={()=>{showEdit(d)}}>Edit</Button>
                   <Button variant="danger" onClick={()=>{deleteUser(d.id)}}>Delete</Button>

@@ -25,7 +25,7 @@ function Categories() {
   }, []);
 
   const getDatas = async (e) => {
-    let res = await axios.get(`categories/list.php`)
+    let res = await axios.get(`categories`)
     setList(res.data);
   }
 
@@ -48,7 +48,7 @@ function Categories() {
       if(datas.id!=''){
         url=`categories/update.php`;
       }else{
-        url=`categories/add.php`;
+        url=`categories`;
       }
      
       let response= await axios.post(url,formData);

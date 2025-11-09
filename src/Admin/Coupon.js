@@ -29,7 +29,7 @@ function Coupon() {
   }, []);
 
   const getDatas = async (e) => {
-    let res = await axios.get(`coupon/list.php`)
+    let res = await axios.get(`coupons`)
     setList(res.data);
   }
 
@@ -54,9 +54,9 @@ function Coupon() {
     try{
       let url='';
       if(datas.id!=''){
-        url=`coupon/update.php`;
+        url=`coupons/update.php`;
       }else{
-        url=`coupon/add.php`;
+        url=`coupons`;
       }
      
       let response= await axios.post(url,formData);

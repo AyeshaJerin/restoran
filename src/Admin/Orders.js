@@ -18,7 +18,7 @@ function Orders() {
   }, []);
 
   const getDatas = async (e) => {
-    let res = await axios.get(`orders/list.php`)
+    let res = await axios.get(`orders`)
     
     setList(res.data);
   }
@@ -38,7 +38,7 @@ function Orders() {
     }
 
     try{
-      let url=`orders/update.php`;
+      let url=`order_update`;
       
       let response= await axios.post(url,formData);
      

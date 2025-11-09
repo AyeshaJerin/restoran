@@ -40,7 +40,7 @@ function Users() {
     getDatas();
   }, []);
  const getDatas = async (e) => {
-    let res = await axios.get(`users/list.php`)
+    let res = await axios.get(`users`)
     setUsers(res.data);
   }
 
@@ -66,34 +66,9 @@ function Users() {
       if(datas.id!=''){
         url=`users/update.php`;
       }else{
-        url=`users/add.php`;
+        url=`users`;
       }
-     
 
-//   const handleChange = (event) => {
-//     const name = event.target.name;
-//     const value = event.target.value;
-//     setInputs(values => ({...values, [name]: value}));
-//   }
-
-//   const handleSubmit = async(e) => {
-//     e.preventDefault();
-//     try{
-//       let url='';
-//       if(inputs.id!=''){
-//         url='http://localhost/restoran-api/users_update.php';
-//       }else{
-//         url='http://localhost/restoran-api/users_add.php';
-//       }
-    //   let response= await axios({
-    //       method: 'post',
-    //       responsiveTYpe: 'json',
-    //       url: url,
-    //       data: inputs
-    //   });
-    //   getDatas();
-    //   handleClose()
-    // } 
      let response= await axios.post(url,formData);
      
       if(response.data.error == 1){

@@ -20,7 +20,7 @@ function Register() {
    
     try{
       
-      let url='register.php';
+      let url='register';
       const formData = new FormData();
      for (const property in datas) {
       formData.append(property, datas[property])
